@@ -15,7 +15,12 @@ class PetCubit extends Cubit<PetState> {
 
       Tokens response = await getToken();
 
-      emit(PetSuccess('', response.accessToken));
+      emit(PetSuccessToken('', response.accessToken));
+
+      GetEntries entries = await getPets(response.accessToken);
+      emit(PetSuccessfulGet('', entries.animals)); 
+
+
     } catch (e) {
       print(e);
       emit(const PetFailed(''));

@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-//part 'api.g.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'api.g.dart';
 
 
 //@JsonSerializable()
@@ -13,6 +14,40 @@ class Tokens {
 String getKey (Map<String, dynamic> json){
   return json["access_token"];
 }
+
+@JsonSerializable()
+class GetEntries{
+  GetEntries({
+    required this.animals,
+    required this.pagination,
+  });
+
+  factory GetEntries.fromJson(Map<String, dynamic> json)
+    => _$GetEntriesFromJson(json);
+
+  Map<String, dynamic> toJson() => _$GetEntriesToJson(this);
+
+  final animals;
+  final pagination;
+
+}
+
+@JsonSerializable()
+class PetEntries {
+  PetEntries({
+    required this.id,
+    required this.type
+  });
+
+  factory PetEntries.fromJson(Map<String, dynamic> json)
+    => _$PetEntriesFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PetEntriesToJson(this);
+
+  final id;
+  final type;
+}
+
 
 /*
 class tokenEntries{
@@ -53,4 +88,20 @@ Future<Tokens> getToken() async {
     jsonDecode(response.body) as Map<String, dynamic>;
   final Tokens tokenRes = Tokens(map["access_token"]);
   return tokenRes;
+}
+
+Future<GetEntries> getPets(String accessToken) async {
+  final response = await http.get(
+    Uri.parse('https://api.petfinder.com/v2/animals'),
+    headers: <String, String>{
+      'Authorization': 'Bearer $accessToken'
+    },
+  );
+  if(response.statusCode != 200) {
+    throw Exception("error ${response.statusCode}");
+  }
+  Map<String, dynamic> entries = jsonDecode(response.body);
+
+  final GetEntries result = GetEntries.fromJson(jsonDecode(response.body));
+  return result;
 }

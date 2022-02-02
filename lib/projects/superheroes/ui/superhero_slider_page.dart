@@ -81,7 +81,7 @@ class _SuperheroSliderPageState extends State<SuperheroSliderPage> {
       ),
       body: BlocBuilder<PetCubit, PetState>(
         builder: (BuildContext context, PetState state) {
-          if(state is PetSuccess){
+          if(state is PetSuccessfulGet){
             return Stack(
               children: [
                 //-----------------------

@@ -58,7 +58,7 @@ class InstagramNavigationPageState extends State<InstagramNavigationPage> {
                  Scaffold(body: Center(child: 
                   BlocBuilder<PetCubit, PetState>(
                     builder: (BuildContext context, PetState state){
-                        if(state is PetSuccess)
+                        if(state is PetSuccessToken)
                         {
                           return ElevatedButton(onPressed: (){}, child: Text("Text"));
                         }
