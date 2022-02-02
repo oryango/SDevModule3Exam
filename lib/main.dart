@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_projects/core/app/app.dart';
+import 'package:flutter_projects/projects/superheroes/superheroes_app.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -8,5 +8,5 @@ void main() {
       statusBarColor: Colors.transparent,
     ),
   );
-  runApp(const BrocodevProjectsApp());
+  runApp(const SuperheroesApp());
 }

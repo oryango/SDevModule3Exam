@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_projects/projects/instagram_redesign/cubit/pet_cubit.dart';
 import 'package:flutter_projects/projects/superheroes/ui/superhero_slider_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,7 +9,13 @@ class SuperheroesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiBlocProvider(
+      providers: <BlocProvider<dynamic>>[
+        BlocProvider<PetCubit>(
+          create: (BuildContext context) => PetCubit(),
+        ),
+      ],
+      child: MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Superheroes App",
       theme: ThemeData(
@@ -44,7 +52,7 @@ class SuperheroesApp extends StatelessWidget {
           bodyColor: Colors.white,
         ),
       ),
-      home:const SuperheroSliderPage(),
-    );
+      home:SuperheroSliderPage(context),
+    ),);
   }
 }

@@ -3,7 +3,6 @@ import 'package:flutter_projects/core/models/project_model.dart';
 import 'package:flutter_projects/core/ui/screens/main_page.dart';
 import 'package:flutter_projects/projects/bookstore_app/book_app.dart';
 import 'package:flutter_projects/projects/find_out/find_out_app.dart';
-import 'package:flutter_projects/projects/instagram_redesign/instagram_app.dart';
 import 'package:flutter_projects/projects/medical_appointment/medical_app.dart';
 import 'package:flutter_projects/projects/movie_selection/movie_selection_app.dart';
 import 'package:flutter_projects/projects/music_album_collection/music_album_collection.dart';
@@ -23,7 +22,6 @@ class ProjectRoutes {
     ProjectModel.musicAppTwo.route: (_) => const MusicVinylPlayer(),
     ProjectModel.medicalAppointment.route: (_) => const MedicalApp(),
     ProjectModel.photographersApp.route: (_) => const PhotographersApp(),
-    ProjectModel.instagram.route: (_) => const InstagramApp(),
     ProjectModel.superheroes.route: (_) => const SuperheroesApp(),
     ProjectModel.orixGaming.route: (_) => const OrixGamingApp(),
     ProjectModel.bookApp.route: (_) => const BookStoreApp(),

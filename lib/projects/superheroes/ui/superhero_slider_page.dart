@@ -1,14 +1,19 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_projects/projects/instagram_redesign/cubit/pet_cubit.dart';
 import 'package:flutter_projects/projects/superheroes/models/superhero.dart';
 import 'package:flutter_projects/projects/superheroes/ui/superhero_detail_page.dart';
 import 'package:flutter_projects/projects/superheroes/ui/widgets/superhero_card.dart';
 
+
 class SuperheroSliderPage extends StatefulWidget {
-  const SuperheroSliderPage({
+  BuildContext oldContext;
+  SuperheroSliderPage(this.oldContext, {
     Key? key,
   }) : super(key: key);
+  
 
   @override
   _SuperheroSliderPageState createState() => _SuperheroSliderPageState();
@@ -22,6 +27,7 @@ class _SuperheroSliderPageState extends State<SuperheroSliderPage> {
   double? _auxPercent;
   late bool _isScrolling;
 
+
   @override
   void initState() {
     _pageController = PageController();
@@ -32,6 +38,7 @@ class _SuperheroSliderPageState extends State<SuperheroSliderPage> {
     _isScrolling = false;
     _pageController!.addListener(_pageListener);
     super.initState();
+    context.read<PetCubit>().fetchPets();
   }
 
   @override
@@ -64,7 +71,7 @@ class _SuperheroSliderPageState extends State<SuperheroSliderPage> {
       // App Bar
       //---------------
       appBar: AppBar(
-        title:const  Text("movies"),
+        title:const  Text("Pets"),
         elevation: 0,
         centerTitle: true,
         leading: IconButton(
@@ -72,60 +79,73 @@ class _SuperheroSliderPageState extends State<SuperheroSliderPage> {
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
-      body: Stack(
-        children: [
-          //-----------------------
-          // Superhero Cards
-          //-----------------------
-          AnimatedPositioned(
-            duration: kThemeAnimationDuration,
-            top: 0,
-            bottom: 0,
-            right: _isScrolling ? 10 : 0,
-            left: _isScrolling ? 10 : 0,
-            child: Stack(
+      body: BlocBuilder<PetCubit, PetState>(
+        builder: (BuildContext context, PetState state) {
+          if(state is PetSuccess){
+            return Stack(
               children: [
-                //----------------
-                // Back Card
-                //----------------
-                Transform.translate(
-                  offset: Offset(0, 50 * _auxPercent!),
-                  child: SuperheroCard(
-                    superhero: heroes[_auxIndex.clamp(0, heroes.length - 1)],
-                    factorChange: _auxPercent,
+                //-----------------------
+                // Superhero Cards
+                //-----------------------
+                AnimatedPositioned(
+                  duration: kThemeAnimationDuration,
+                  top: 0,
+                  bottom: 0,
+                  right: _isScrolling ? 10 : 0,
+                  left: _isScrolling ? 10 : 0,
+                  child: Stack(
+                    children: [
+                      //----------------
+                      // Back Card
+                      //----------------
+                      Transform.translate(
+                        offset: Offset(0, 50 * _auxPercent!),
+                        child: SuperheroCard(
+                          superhero: heroes[_auxIndex.clamp(0, heroes.length - 1)],
+                          factorChange: _auxPercent,
+                        ),
+                      ),
+                      //----------------
+                      // Front Card
+                      //----------------
+                      Transform.translate(
+                        offset: Offset(-800 * _percent!, 100 * _percent!),
+                        child: Transform.rotate(
+                          angle: angleRotate * _percent!,
+                          child: SuperheroCard(
+                            superhero: heroes[_index],
+                            factorChange: _percent,
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
-                //----------------
-                // Front Card
-                //----------------
-                Transform.translate(
-                  offset: Offset(-800 * _percent!, 100 * _percent!),
-                  child: Transform.rotate(
-                    angle: angleRotate * _percent!,
-                    child: SuperheroCard(
-                      superhero: heroes[_index],
-                      factorChange: _percent,
-                    ),
-                  ),
+                //-----------------------------------------------------
+                // VOID PAGE VIEW
+                // This page view is just for using the page controller
+                //-----------------------------------------------------
+                PageView.builder(
+                  controller: _pageController,
+                  itemCount: heroes.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () => _openDetail(context, heroes[index]),
+                      child: const SizedBox(),
+                    );
+                  },
                 )
               ],
-            ),
-          ),
-          //-----------------------------------------------------
-          // VOID PAGE VIEW
-          // This page view is just for using the page controller
-          //-----------------------------------------------------
-          PageView.builder(
-            controller: _pageController,
-            itemCount: heroes.length,
-            itemBuilder: (context, index) {
-              return InkWell(
-                onTap: () => _openDetail(context, heroes[index]),
-                child: const SizedBox(),
-              );
-            },
-          )
-        ],
+            );
+          }
+          else{
+            return Center(
+              child: CircularProgressIndicator(
+                color: Colors.yellow[800],
+              ),
+            );
+          }
+        }
       ),
     );
   }
