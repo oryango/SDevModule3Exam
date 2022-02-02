@@ -45,7 +45,11 @@ flutter:
     - assets/svg/streaming/
     - assets/img/books/
     - assets/img/projects/
+    - assets/img/pets/
   fonts:
     - family: MDIcons
       fonts:
         - asset: assets/icons/md_icons/MdIcons.ttf
+    - family: Oswald
+      fonts: 
+        - asset: fonts/Oswald-Regular.ttf
