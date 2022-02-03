@@ -160,7 +160,7 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                           child: Hero(
                             tag: widget.pet["breeds"],
                             child: AnimatedDefaultTextStyle(
-                              duration: kThemeAnimationDuration,
+                              duration: const Duration(milliseconds: 600),
                               style: textTheme.headline2!.copyWith(
                                   color: _changeToBlack
                                       ? Colors.black
@@ -192,7 +192,7 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                           Hero(
                             tag: widget.pet["name"],
                             child: AnimatedDefaultTextStyle(
-                              duration: kThemeAnimationDuration,
+                              duration: const Duration(milliseconds: 400),
                               style: textTheme.headline4!.copyWith(
                                   color: _changeToBlack
                                       ? Colors.black
@@ -253,9 +253,11 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                           ),
                         ),
                       ),
-                      const Divider(height: 40),
+                      const Divider(height: 35, 
+                        thickness: 3, 
+                        color: Color(0xFFFF6F00),),
                       //----------------------------------
-                      // Section Movies Title
+                      // Section Movies Title 
                       //----------------------------------
                       AnimatedContainer(
                         duration: const Duration(milliseconds: 800),
