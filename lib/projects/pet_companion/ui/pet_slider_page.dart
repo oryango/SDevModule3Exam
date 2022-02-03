@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projects/projects/pet_companion/cubit/pet_cubit.dart';
 import 'package:flutter_projects/projects/pet_companion/ui/pet_homepage.dart';
-import 'package:flutter_projects/projects/pet_companion/ui/superhero_detail_page.dart';
-import 'package:flutter_projects/projects/pet_companion/ui/widgets/superhero_card.dart';
+import 'package:flutter_projects/projects/pet_companion/ui/pet_detail_page.dart';
+import 'package:flutter_projects/projects/pet_companion/ui/widgets/pet_card.dart';
 
 class SuperheroSliderPage extends StatefulWidget {
   SuperheroSliderPage(this.type, {

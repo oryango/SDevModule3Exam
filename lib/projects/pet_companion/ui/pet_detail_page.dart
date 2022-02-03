@@ -113,7 +113,7 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: const [
-                          Color(0x775555FF),
+                          Color(0xFF222222),
                           Colors.white
                         ],
                         begin: Alignment.topCenter,
@@ -170,9 +170,11 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                                 child: SizedBox(
                                   height: MediaQuery.of(context).size.height/15,
                                   child: ElevatedButton(
+                                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.amberAccent[400])),
                                     child: Text("Adopt",style: 
                                       textTheme.headline2!.
-                                      copyWith(fontSize: 30),),
+                                      copyWith(fontSize: 30),
+                                    ),
                                     onPressed: (){},
                                   ),
                                 ),

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_int_literals
 
 import 'package:flutter/material.dart';
-import 'package:flutter_projects/projects/pet_companion/superheroes_app.dart';
+import 'package:flutter_projects/projects/pet_companion/pet_app.dart';
 
 class PetHomePage extends StatelessWidget {
   const PetHomePage({Key? key}) : super(key: key);

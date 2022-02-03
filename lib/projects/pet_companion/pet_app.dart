@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projects/projects/pet_companion/cubit/pet_cubit.dart';
-import 'package:flutter_projects/projects/pet_companion/ui/superhero_slider_page.dart';
+import 'package:flutter_projects/projects/pet_companion/ui/pet_slider_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SuperheroesApp extends StatelessWidget {
