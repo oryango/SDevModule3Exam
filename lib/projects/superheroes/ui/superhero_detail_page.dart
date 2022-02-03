@@ -168,8 +168,12 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                                       : Colors.white,),
                               child: Container(
                                 width: MediaQuery.of(context).size.width,
-                                child: TextFormField(readOnly: true, initialValue:
-                                  widget.pet["url"].toString().toLowerCase(),
+                                child: SizedBox(
+                                  height: MediaQuery.of(context).size.height/15,
+                                  child: ElevatedButton(
+                                    child: Text("Adopt",style: textTheme.headline2!.copyWith(fontSize: 30)),
+                                    onPressed: (){},
+                                  ),
                                 ),
                               ),
                             ),
@@ -186,19 +190,19 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                             tag: widget.pet["name"],
                             child: AnimatedDefaultTextStyle(
                               duration: kThemeAnimationDuration,
-                              style: textTheme.headline5!.copyWith(
+                              style: textTheme.headline4!.copyWith(
                                   color: _changeToBlack
                                       ? Colors.black
                                       : Colors.white,),
                               child: Text(
-                                widget.pet["name"].toLowerCase(),
+                                "meet "+widget.pet["name"].toLowerCase()+"!",
                               ),
                             ),
                           ),
                           //--------------------------
                           // Animated Marvel Logo
                           //--------------------------
-                          TweenAnimationBuilder<double>(
+                          /*TweenAnimationBuilder<double>(
                             duration: const Duration(milliseconds: 400),
                             curve: Curves.fastOutSlowIn,
                             tween: Tween(
@@ -216,10 +220,10 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                               height: 35,
                               width: 100,
                             ),
-                          )
+                          )*/
                         ],
                       ),
-                      const Divider(height: 30),
+                      //const Divider(height: 50),
                       //---------------------------------------
                       // Animated Superhero Description
                       //---------------------------------------
@@ -237,16 +241,16 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                           child: Text(
                             ProfilePicture().getDescription(widget.pet),
                             style: GoogleFonts.spartan(
-                              color: Colors.grey[500],
-                              height: 1.5,
+                              color: Colors.grey[800],
+                              height: 1.75,
                             ),
-                            maxLines: 4,
+                            maxLines: 5,
                             textAlign: TextAlign.justify,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ),
-                      const Divider(height: 30),
+                      const Divider(height: 40),
                       //----------------------------------
                       // Section Movies Title
                       //----------------------------------
@@ -261,23 +265,38 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                         child: AnimatedOpacity(
                           duration: const Duration(milliseconds: 200),
                           opacity: _enableInfoItems ? 1.0 : 0.0,
-                          child: Text(
-                            'movies',
-                            style: textTheme.headline5!
-                                .copyWith(color: Colors.black),
+                          child: Center(
+                            child: Text(
+                              'additional information',
+                              style: textTheme.headline5!
+                                  .copyWith(color: Colors.black),
+                            ),
                           ),
                         ),
                       ),
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 50,
+                  child: Container(
+                    padding: EdgeInsets.all(15),
+                    child: 
+                      Center(
+                        child: Text(ProfilePicture().getBreed(widget.pet),
+                        style: textTheme.headline5!
+                          .copyWith(color: Colors.grey[800],fontSize: 18),
+                    ),
+                      ),
+                  ),
+                ),
                 //----------------------------
                 // Superhero movies list
                 //----------------------------
-                /*SizedBox(
-                  height: 240,
+                SizedBox(
+                  height: 150,
                   child: ListView.builder(
-                    itemCount: widget.pet["attributes"].length,
+                    itemCount: 11,
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 40,
@@ -305,16 +324,30 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                           );
                         },
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 15),
+                          padding: const EdgeInsets.only(right: 10),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
-                            child: CachedNetworkImage(imageUrl: movie.urlImage),
+                            child: SizedBox(
+                              width: 180,
+                              child: Card(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(ProfilePicture().getInformation(widget.pet)[index*2],
+                                    textAlign: TextAlign.center, 
+                                    style: textTheme.headline6!.copyWith(
+                                      color: Colors.grey[800]),),
+                                    ProfilePicture().getInformation(widget.pet)[index*2+1]
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       );
                     },
                   ),
-                )*/
+                )
               ],
             ),
           ),
