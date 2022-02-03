@@ -92,7 +92,8 @@ Future<Tokens> getToken() async {
 
 Future<GetEntries> getPets(String accessToken) async {
   final response = await http.get(
-    Uri.parse('https://api.petfinder.com/v2/animals'),
+    Uri.parse('https://api.petfinder.com/v2/animals?'
+    'limit=100&-description',),
     headers: <String, String>{
       'Authorization': 'Bearer $accessToken'
     },

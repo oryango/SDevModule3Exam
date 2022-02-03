@@ -20,93 +20,95 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-              alignment: Alignment.topLeft,
-              child: Text(
-                "Welcome!",
-                style: TextStyle(
-                  fontFamily: 'Oswald',
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "Welcome!",
+                  style: TextStyle(
+                    fontFamily: 'Oswald',
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
-          ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/img/pets/dog.jpg'),
-                        fit: BoxFit.fitWidth,
-                        alignment: Alignment.topCenter,
-                      ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
                     ),
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 50, horizontal: 20),
-                        child: Text(
-                          "Dogs",
-                          style: TextStyle(
-                            fontFamily: 'Oswald',
-                            fontSize: 30,
-                            color: Colors.white,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/img/pets/dog.jpg'),
+                          fit: BoxFit.fitWidth,
+                          alignment: Alignment.topCenter,
+                        ),
+                      ),
+                      child: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 50, horizontal: 20),
+                          child: Text(
+                            "Dogs",
+                            style: TextStyle(
+                              fontFamily: 'Oswald',
+                              fontSize: 30,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
+                      height: 400,
+                      width: 300,
                     ),
-                    height: 400,
-                    width: 300,
                   ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/img/pets/cat.jpg'),
-                        fit: BoxFit.fitWidth,
-                        alignment: Alignment.topCenter,
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/img/pets/cat.jpg'),
+                          fit: BoxFit.fitWidth,
+                          alignment: Alignment.topCenter,
+                        ),
                       ),
-                    ),
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 50, horizontal: 20),
-                        child: Text(
-                          "Cats",
-                          style: TextStyle(
-                            fontFamily: 'Oswald',
-                            fontSize: 30,
-                            color: Colors.white,
+                      child: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 50, horizontal: 20),
+                          child: Text(
+                            "Cats",
+                            style: TextStyle(
+                              fontFamily: 'Oswald',
+                              fontSize: 30,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
+                      height: 400,
+                      width: 300,
                     ),
-                    height: 400,
-                    width: 300,
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

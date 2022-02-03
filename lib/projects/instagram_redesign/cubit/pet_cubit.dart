@@ -18,7 +18,11 @@ class PetCubit extends Cubit<PetState> {
       emit(PetSuccessToken('', response.accessToken));
 
       GetEntries entries = await getPets(response.accessToken);
-      emit(PetSuccessfulGet('', entries.animals)); 
+      List<Map<String,dynamic>> fields = new List<Map<String,dynamic>>.from(entries.animals);
+
+      //print(fields);
+
+      emit(PetSuccessfulGet('', fields)); 
 
 
     } catch (e) {

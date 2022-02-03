@@ -29,5 +29,5 @@ class PetFetching extends PetState {
 
 class PetSuccessfulGet extends PetState {
   const PetSuccessfulGet(String message, this.entries) : super(message);
-  final List<dynamic> entries;
+  final List<Map<String,dynamic>> entries;
 }

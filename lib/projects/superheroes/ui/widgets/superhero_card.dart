@@ -2,16 +2,17 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_projects/projects/superheroes/models/superhero.dart';
+import 'package:flutter_projects/projects/superheroes/ui/widgets/pet_image.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SuperheroCard extends StatelessWidget {
-  const SuperheroCard({
+class PetCard extends StatelessWidget {
+  const PetCard({
     Key? key,
-    required this.superhero,
+    required this.pet,
     required this.factorChange,
   }) : super(key: key);
 
-  final Superhero superhero;
+  final Map<String, dynamic> pet;
   final double? factorChange;
 
   @override
@@ -29,10 +30,10 @@ class SuperheroCard extends StatelessWidget {
           Positioned.fill(
             top: separation,
             child: Hero(
-              tag: "${superhero.heroName}background",
+              tag: "${pet["id"]}background",
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  color: Color(superhero.rawColor!),
+                  color: Color(0xFF222222),
                   borderRadius: BorderRadius.circular(40),
                 ),
               ),
@@ -45,14 +46,15 @@ class SuperheroCard extends StatelessWidget {
             left: 20,
             right: 20,
             top: separation * factorChange!,
-            bottom: size.height * .35,
+            bottom: size.height * .42,
             child: Opacity(
               opacity: 1.0 - factorChange!,
               child: Transform.scale(
                 scale: lerpDouble(1, .4, factorChange!)!,
                 child: Hero(
-                  tag: superhero.pathImage!,
-                  child: Image.asset(superhero.pathImage!),
+                  tag: pet["photos"]!,
+                  child:  ProfilePicture().showProfile(pet,context,"medium"),
+                    //Image.network(pet["photos"][0]["large"]),
                 ),
               ),
             ),
@@ -67,23 +69,23 @@ class SuperheroCard extends StatelessWidget {
                 //----------------------------------
                 // Superhero Name
                 //----------------------------------
-                FittedBox(
+                /*FittedBox(
                   child: Hero(
-                    tag: superhero.heroName!,
+                    tag: pet["id"],
                     child: Text(
-                      superhero.heroName!.replaceAll(' ', '\n').toLowerCase(),
+                      pet["breeds"].toString().toLowerCase(),
                       style: Theme.of(context).textTheme.headline2,
                     ),
                   ),
-                ),
+                ),*/
                 //----------------------------------
                 // Superhero Secret Identity Name
                 //----------------------------------
                 Hero(
-                  tag: superhero.name!,
+                  tag: pet["name"]+pet["id"].toString(),
                   child: Text(
-                    superhero.name!.toLowerCase(),
-                    style: Theme.of(context).textTheme.headline5,
+                    pet["name"].toLowerCase(),
+                    style: Theme.of(context).textTheme.headline2,
                   ),
                 ),
                 const SizedBox(height: 25),
@@ -102,7 +104,7 @@ class SuperheroCard extends StatelessWidget {
                   ),
                   style: GoogleFonts.spartan(
                       color: Colors.amber,
-                      fontSize: 18,
+                      fontSize: 25,
                       fontWeight: FontWeight.w500,),
                 )
               ],

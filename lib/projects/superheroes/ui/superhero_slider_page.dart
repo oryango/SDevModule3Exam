@@ -9,10 +9,7 @@ import 'package:flutter_projects/projects/superheroes/ui/widgets/superhero_card.
 
 
 class SuperheroSliderPage extends StatefulWidget {
-  BuildContext oldContext;
-  SuperheroSliderPage(this.oldContext, {
-    Key? key,
-  }) : super(key: key);
+  const SuperheroSliderPage({Key? key,  }) : super(key: key);
   
 
   @override
@@ -64,7 +61,6 @@ class _SuperheroSliderPageState extends State<SuperheroSliderPage> {
 
   @override
   Widget build(BuildContext context) {
-    const heroes = Superhero.marvelHeroes;
     const  angleRotate = -pi * .5;
     return Scaffold(
       //---------------
@@ -82,6 +78,7 @@ class _SuperheroSliderPageState extends State<SuperheroSliderPage> {
       body: BlocBuilder<PetCubit, PetState>(
         builder: (BuildContext context, PetState state) {
           if(state is PetSuccessfulGet){
+            final List<Map<String, dynamic>>pets = state.entries;
             return Stack(
               children: [
                 //-----------------------
@@ -100,8 +97,8 @@ class _SuperheroSliderPageState extends State<SuperheroSliderPage> {
                       //----------------
                       Transform.translate(
                         offset: Offset(0, 50 * _auxPercent!),
-                        child: SuperheroCard(
-                          superhero: heroes[_auxIndex.clamp(0, heroes.length - 1)],
+                        child: PetCard(
+                          pet: pets[_auxIndex.clamp(0, pets.length - 1)],
                           factorChange: _auxPercent,
                         ),
                       ),
@@ -112,8 +109,8 @@ class _SuperheroSliderPageState extends State<SuperheroSliderPage> {
                         offset: Offset(-800 * _percent!, 100 * _percent!),
                         child: Transform.rotate(
                           angle: angleRotate * _percent!,
-                          child: SuperheroCard(
-                            superhero: heroes[_index],
+                          child: PetCard(
+                            pet: pets[_index],
                             factorChange: _percent,
                           ),
                         ),
@@ -127,10 +124,10 @@ class _SuperheroSliderPageState extends State<SuperheroSliderPage> {
                 //-----------------------------------------------------
                 PageView.builder(
                   controller: _pageController,
-                  itemCount: heroes.length,
+                  itemCount: pets.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () => _openDetail(context, heroes[index]),
+                      onTap: () => _openDetail(context, pets[index]),
                       child: const SizedBox(),
                     );
                   },
@@ -150,13 +147,13 @@ class _SuperheroSliderPageState extends State<SuperheroSliderPage> {
     );
   }
 
-  void _openDetail(BuildContext context, Superhero superhero) {
+  void _openDetail(BuildContext context, Map<String, dynamic> pet) {
     Navigator.push(context, PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) {
         return FadeTransition(
           opacity: animation,
           child: SuperheroDetailPage(
-            superhero: superhero,
+            pet: pet,
           ),
         );
       },

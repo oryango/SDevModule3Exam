@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_projects/projects/superheroes/models/superhero.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'widgets/pet_image.dart';
+
 class SuperheroDetailPage extends StatefulWidget {
   const SuperheroDetailPage({
     Key? key,
-    required this.superhero,
+    required this.pet,
   }) : super(key: key);
 
-  final Superhero superhero;
+  final Map<String, dynamic> pet;
 
   @override
   _SuperheroDetailPageState createState() => _SuperheroDetailPageState();
@@ -105,7 +107,7 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
           //-------------------------
           Positioned.fill(
               child: Hero(
-            tag: "${widget.superhero.heroName}background",
+            tag: "${widget.pet["breeds"]}background",
             child: AnimatedBuilder(
                 animation: _controller!,
                 builder: (_, __) {
@@ -113,7 +115,7 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Color(widget.superhero.rawColor!),
+                          Color(0x775555FF),
                           Colors.white
                         ],
                         begin: Alignment.topCenter,
@@ -140,12 +142,8 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                 //---------------------
                 SafeArea(
                   child: Hero(
-                    tag: widget.superhero.pathImage!,
-                    child: Image.asset(
-                      widget.superhero.pathImage!,
-                      height: size.height * .55,
-                      width: size.width,
-                    ),
+                    tag: widget.pet["photos"],
+                    child: ProfilePicture().showProfile(widget.pet,context,'large'),
                   ),
                 ),
                 Padding(
@@ -161,17 +159,18 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                         alignment: Alignment.bottomLeft,
                         child: FittedBox(
                           child: Hero(
-                            tag: widget.superhero.heroName!,
+                            tag: widget.pet["breeds"],
                             child: AnimatedDefaultTextStyle(
                               duration: kThemeAnimationDuration,
                               style: textTheme.headline2!.copyWith(
                                   color: _changeToBlack
                                       ? Colors.black
                                       : Colors.white,),
-                              child: Text(
-                                widget.superhero.heroName!
-                                    .replaceAll(' ', '\n')
-                                    .toLowerCase(),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                child: TextFormField(readOnly: true, initialValue:
+                                  widget.pet["url"].toString().toLowerCase(),
+                                ),
                               ),
                             ),
                           ),
@@ -184,7 +183,7 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                           // Superhero Secret Identity Name
                           //---------------------------------------
                           Hero(
-                            tag: widget.superhero.name!,
+                            tag: widget.pet["name"],
                             child: AnimatedDefaultTextStyle(
                               duration: kThemeAnimationDuration,
                               style: textTheme.headline5!.copyWith(
@@ -192,7 +191,7 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                                       ? Colors.black
                                       : Colors.white,),
                               child: Text(
-                                widget.superhero.name!.toLowerCase(),
+                                widget.pet["name"].toLowerCase(),
                               ),
                             ),
                           ),
@@ -236,7 +235,7 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                           duration: const Duration(milliseconds: 200),
                           opacity: _enableInfoItems ? 1.0 : 0.0,
                           child: Text(
-                            widget.superhero.description!,
+                            ProfilePicture().getDescription(widget.pet),
                             style: GoogleFonts.spartan(
                               color: Colors.grey[500],
                               height: 1.5,
@@ -275,10 +274,10 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                 //----------------------------
                 // Superhero movies list
                 //----------------------------
-                SizedBox(
+                /*SizedBox(
                   height: 240,
                   child: ListView.builder(
-                    itemCount: widget.superhero.movies!.length,
+                    itemCount: widget.pet["attributes"].length,
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 40,
@@ -286,7 +285,7 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                     ),
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
-                      final movie = widget.superhero.movies![index];
+                      final movie = widget.pet["attributes"][index];
                       //---------------------------
                       // Animated Movie Card
                       //---------------------------
@@ -315,7 +314,7 @@ class _SuperheroDetailPageState extends State<SuperheroDetailPage>
                       );
                     },
                   ),
-                )
+                )*/
               ],
             ),
           ),

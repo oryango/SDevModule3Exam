@@ -2,22 +2,22 @@ class Superhero {
   const Superhero({
     this.name,
     this.description,
-    this.heroName,
-    this.pathImage,
-    this.movies,
+    this.breeds,
+    this.photos,
+    this.attributes,
     this.rawColor,
   });
 
   final String? name;
-  final String? heroName;
+  final String? breeds;
   final String? description;
-  final String? pathImage;
-  final List<HeroMovie>? movies;
+  final String? photos;
+  final List<HeroMovie>? attributes;
   final int? rawColor;
 
   static const marvelHeroes = [
     Superhero(
-        heroName: 'Spider Man',
+        breeds: 'Spider Man',
         name: 'Peter Parker',
         description:
             'Spider-Man has spider-like abilities including superhuman streng'
@@ -26,11 +26,11 @@ class Superhero {
             ' also has a “spider sense,” that warns him of '
             'impending danger. Spider-Man has supplemented his powers with t'
             'echnology',
-        pathImage: 'assets/img/superheroes/spiderman-a.png',
-        movies: HeroMovie.spidermanMovies,
+        photos: 'assets/img/superheroes/spiderman-a.png',
+        attributes: HeroMovie.spidermanMovies,
         rawColor: 0xffA41209,),
     Superhero(
-        heroName: 'Iron Man',
+        breeds: 'Iron Man',
         name: 'Tony Stark',
         description:
             'He is the Armored Avenger - driven by a heart that is part machin'
@@ -39,11 +39,11 @@ class Superhero {
             'lar arc reactor-powered Iron Man armor, '
             'granting superhuman strength & durability, the ability to fly &'
             ' project Repulsor blasts',
-        pathImage: 'assets/img/superheroes/ironman-a.png',
-        movies: HeroMovie.ironManMovies,
+        photos: 'assets/img/superheroes/ironman-a.png',
+        attributes: HeroMovie.ironManMovies,
         rawColor: 0xffB3790F,),
     Superhero(
-        heroName: 'Thor',
+        breeds: 'Thor',
         name: 'Thor Odinson',
         description:
             'Thor Odinson is the Asgardian God of Thunder, superhero, self-pro'
@@ -52,11 +52,11 @@ class Superhero {
             'his homeworld and subsequently became well '
             'known for his actions on Earth, which included acting as a found'
             'ing member of the Avengers.',
-        pathImage: 'assets/img/superheroes/thor-c.png',
-        movies: HeroMovie.thorMovies,
+        photos: 'assets/img/superheroes/thor-c.png',
+        attributes: HeroMovie.thorMovies,
         rawColor: 0xff3E4953,),
     Superhero(
-        heroName: 'Ant Man',
+        breeds: 'Ant Man',
         name: 'Scott Lang',
         description:
             'Armed with the astonishing ability to shrink in scale but increas'
@@ -64,11 +64,11 @@ class Superhero {
             'his inner-hero and help his mentor, Dr. Hank Pym, protect the se'
             'cret behind his spectacular Ant-Man suit '
             'from a new generation of towering threats.',
-        pathImage: 'assets/img/superheroes/antman-a.png',
-        movies: HeroMovie.antmanMovies,
+        photos: 'assets/img/superheroes/antman-a.png',
+        attributes: HeroMovie.antmanMovies,
         rawColor: 0xff98142B,),
     Superhero(
-        heroName: 'Black Widow',
+        breeds: 'Black Widow',
         name: 'Natasha Romanova',
         description:
             'The first and best-known Black Widow is a Russian agent trained'
@@ -77,11 +77,11 @@ class Superhero {
             ' pair of wrist-mounted energy weapons '
             'dubbed her "Widow\'s Bite". She wears no costume during her firs'
             't few appearances but simply evening wear and a veil.',
-        pathImage: 'assets/img/superheroes/blackwidow-a.png',
-        movies: HeroMovie.blackWidowMovies,
+        photos: 'assets/img/superheroes/blackwidow-a.png',
+        attributes: HeroMovie.blackWidowMovies,
         rawColor: 0xff011535,),
     Superhero(
-        heroName: 'Captain America',
+        breeds: 'Captain America',
         name: 'Steve Rogers',
         description:
             'Captain America is the alter ego of Steve Rogers, a frail young '
@@ -90,11 +90,11 @@ class Superhero {
             ' efforts in World War II. Near the end of the war, '
             'he was trapped in ice and survived in suspended animation until'
             ' he was revived in modern times.',
-        pathImage: 'assets/img/superheroes/captain-b.png',
-        movies: HeroMovie.captainAmericaMovies,
+        photos: 'assets/img/superheroes/captain-b.png',
+        attributes: HeroMovie.captainAmericaMovies,
         rawColor: 0xff0232CB,),
     Superhero(
-        heroName: 'Hawk eye',
+        breeds: 'Hawk eye',
         name: 'Clint Barton',
         description:
             'An expert marksman and fighter, Clint Barton puts his talents to '
@@ -102,11 +102,11 @@ class Superhero {
             ' as a special agent. The archer known as Hawkeye also boasts a '
             'strong moral compass that at times leads '
             'him astray from his direct orders',
-        pathImage: 'assets/img/superheroes/hawkeye.png',
-        movies: [],
+        photos: 'assets/img/superheroes/hawkeye.png',
+        attributes: [],
         rawColor: 0xff380142,),
     Superhero(
-        heroName: 'Hulk',
+        breeds: 'Hulk',
         name: 'Bruce Banner',
         description:
             'In his comic book appearances, the character is both the Hulk, a '
@@ -115,8 +115,8 @@ class Superhero {
             'alter ego Dr. Robert Bruce Banner, a '
             'physically weak, socially withdrawn, and emotionally reserved '
             'physicist',
-        pathImage: 'assets/img/superheroes/hulk-b.png',
-        movies: HeroMovie.hulkMovies,
+        photos: 'assets/img/superheroes/hulk-b.png',
+        attributes: HeroMovie.hulkMovies,
         rawColor: 0xff047A3B,),
   ];
 }
