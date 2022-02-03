@@ -1,3 +1,5 @@
+// ignore_for_file: omit_local_variable_types, type_annotate_public_apis, prefer_typing_uninitialized_variables
+
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -36,7 +38,7 @@ class GetEntries{
 class PetEntries {
   PetEntries({
     required this.id,
-    required this.type
+    required this.type,
   });
 
   factory PetEntries.fromJson(Map<String, dynamic> json)
@@ -101,7 +103,6 @@ Future<GetEntries> getPets(String accessToken,String type) async {
   if(response.statusCode != 200) {
     throw Exception("error ${response.statusCode}");
   }
-  Map<String, dynamic> entries = jsonDecode(response.body);
 
   final GetEntries result = GetEntries.fromJson(jsonDecode(response.body));
   return result;

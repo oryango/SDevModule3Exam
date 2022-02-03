@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_projects/projects/superheroes/superheroes_app.dart';
-
-import 'projects/superheroes/ui/pet_homepage.dart';
+import 'package:flutter_projects/projects/pet_companion/ui/pet_homepage.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
