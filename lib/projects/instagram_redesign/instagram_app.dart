@@ -36,7 +36,7 @@ class InstagramNavigationPageState extends State<InstagramNavigationPage> {
   @override
   void initState() {
     super.initState();
-    context.read<PetCubit>().fetchPets();
+    //context.read<PetCubit>().fetchPets(type);
   }
 
   @override

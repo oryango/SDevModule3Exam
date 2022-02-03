@@ -9,7 +9,7 @@ class PetCubit extends Cubit<PetState> {
   PetCubit() : super(const PetInitial(''));
   //final MoviesRepository _moviesRepository = MoviesRepository();
 
-  Future<void> fetchPets() async {
+  Future<void> fetchPets(String type) async {
     try {
       emit(const PetLoading(''));
 
@@ -17,7 +17,7 @@ class PetCubit extends Cubit<PetState> {
 
       emit(PetSuccessToken('', response.accessToken));
 
-      GetEntries entries = await getPets(response.accessToken);
+      GetEntries entries = await getPets(response.accessToken,type);
       List<Map<String,dynamic>> fields = new List<Map<String,dynamic>>.from(entries.animals);
 
       //print(fields);

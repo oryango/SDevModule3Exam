@@ -6,8 +6,9 @@ import 'package:flutter_projects/projects/superheroes/ui/superhero_slider_page.d
 import 'package:google_fonts/google_fonts.dart';
 
 class SuperheroesApp extends StatelessWidget {
-  const SuperheroesApp({Key? key}) : super(key: key);
+  SuperheroesApp(this.type, {Key? key}) : super(key: key);
 
+  String type;
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -53,7 +54,7 @@ class SuperheroesApp extends StatelessWidget {
           bodyColor: Colors.white,
         ),
       ),
-      home:SuperheroSliderPage(),
+      home:SuperheroSliderPage(type),
     ),);
   }
 }

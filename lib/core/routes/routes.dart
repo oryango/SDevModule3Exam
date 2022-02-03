@@ -22,7 +22,7 @@ class ProjectRoutes {
     ProjectModel.musicAppTwo.route: (_) => const MusicVinylPlayer(),
     ProjectModel.medicalAppointment.route: (_) => const MedicalApp(),
     ProjectModel.photographersApp.route: (_) => const PhotographersApp(),
-    ProjectModel.superheroes.route: (_) => const SuperheroesApp(),
+    //ProjectModel.superheroes.route: (_) => const SuperheroesApp(),
     ProjectModel.orixGaming.route: (_) => const OrixGamingApp(),
     ProjectModel.bookApp.route: (_) => const BookStoreApp(),
     ProjectModel.templateGallery.route: (_) => const TemplateGalleryApp(),

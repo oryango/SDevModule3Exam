@@ -9,10 +9,10 @@ import 'package:flutter_projects/projects/superheroes/ui/superhero_detail_page.d
 import 'package:flutter_projects/projects/superheroes/ui/widgets/superhero_card.dart';
 
 class SuperheroSliderPage extends StatefulWidget {
-  const SuperheroSliderPage({
+  SuperheroSliderPage(this.type, {
     Key? key,
   }) : super(key: key);
-
+  String type;
   @override
   _SuperheroSliderPageState createState() => _SuperheroSliderPageState();
 }
@@ -35,7 +35,7 @@ class _SuperheroSliderPageState extends State<SuperheroSliderPage> {
     _isScrolling = false;
     _pageController!.addListener(_pageListener);
     super.initState();
-    context.read<PetCubit>().fetchPets();
+    context.read<PetCubit>().fetchPets(widget.type);
   }
 
   @override

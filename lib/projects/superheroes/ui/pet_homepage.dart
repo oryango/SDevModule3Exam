@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const SuperheroesApp()),
+                                builder: (context) => SuperheroesApp("Dog")),
                           );
                         },
                         child: Card(
@@ -115,7 +115,7 @@ class HomePage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const SuperheroesApp()),
+                                builder: (context) => SuperheroesApp("Cat")),
                           );
                         },
                         child: Card(
