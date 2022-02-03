@@ -46,6 +46,7 @@ flutter:
     - assets/img/books/
     - assets/img/projects/
     - assets/img/pets/
+    - assets/img/pet accessories/
   fonts:
     - family: MDIcons
       fonts:
@@ -53,3 +54,6 @@ flutter:
     - family: Oswald
       fonts: 
         - asset: fonts/Oswald-Regular.ttf
+    - family: Abel
+      fonts:
+        - asset: fonts/Abel-Regular.ttf
