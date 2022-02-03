@@ -33,18 +33,6 @@ flutter:
 
   assets:
     - assets/img/
-    - assets/img/findout/
-    - assets/img/streaming/
-    - assets/img/movie/
-    - assets/img/music/
-    - assets/img/superheroes/
-    - assets/img/instagram/
-    - assets/img/gaming/
-    - assets/svg/instagram/
-    - assets/svg/medical/
-    - assets/svg/streaming/
-    - assets/img/books/
-    - assets/img/projects/
     - assets/img/pets/
     - assets/img/pet accessories/
   fonts:
