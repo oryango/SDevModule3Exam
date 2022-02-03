@@ -264,6 +264,17 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 25.0),
+                child: Center(
+                  child: Text(
+                    "Powered by PetFinder™",
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
