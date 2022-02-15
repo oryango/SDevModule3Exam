@@ -3,5 +3,5 @@ This is a flutter application created for compliance of Malayan Colleges Mindana
 
 This app was created to showcase our creativity in utilizing APIs.  
 
-API: https://www.adoptapet.com/public/apis/pet_list.html
+API: https://www.petfinder.com/developers/v2/docs/
 Template: https://github.com/brocodev/flutter_projects?ref=flutterawesome.com
